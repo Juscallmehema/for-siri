@@ -1,0 +1,220 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>I'm Sorry, Siri ❤️</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ffd6e7, #fff0f6, #ffe4ef);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow-x: hidden;
+      color: #5a1935;
+    }
+
+    .hearts span {
+      position: fixed;
+      bottom: -50px;
+      font-size: 25px;
+      animation: float 8s linear infinite;
+      opacity: 0.7;
+      z-index: 0;
+    }
+
+    .hearts span:nth-child(1) { left: 10%; animation-delay: 0s; }
+    .hearts span:nth-child(2) { left: 25%; animation-delay: 2s; }
+    .hearts span:nth-child(3) { left: 45%; animation-delay: 4s; }
+    .hearts span:nth-child(4) { left: 65%; animation-delay: 1s; }
+    .hearts span:nth-child(5) { left: 85%; animation-delay: 3s; }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+      }
+      20% { opacity: 0.8; }
+      100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    .card {
+      position: relative;
+      z-index: 1;
+      width: min(90%, 700px);
+      padding: 50px 35px;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.88);
+      border-radius: 30px;
+      box-shadow: 0 20px 60px rgba(150, 50, 90, 0.2);
+      backdrop-filter: blur(8px);
+    }
+
+    .small {
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      font-size: clamp(55px, 12vw, 100px);
+      color: #d6336c;
+      margin-bottom: 10px;
+      text-shadow: 3px 3px 0 #ffd1e0;
+    }
+
+    h2 {
+      font-size: 32px;
+      margin-bottom: 25px;
+    }
+
+    .message {
+      font-size: 19px;
+      line-height: 1.7;
+      margin: 0 auto 25px;
+      max-width: 560px;
+    }
+
+    .highlight {
+      font-weight: bold;
+      color: #d6336c;
+    }
+
+    .heart {
+      font-size: 65px;
+      animation: heartbeat 1.3s infinite;
+      margin: 20px 0;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.18); }
+    }
+
+    button {
+      border: none;
+      padding: 15px 28px;
+      border-radius: 999px;
+      background: #d6336c;
+      color: white;
+      font-size: 17px;
+      cursor: pointer;
+      transition: 0.25s;
+      box-shadow: 0 8px 20px rgba(214, 51, 108, 0.3);
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      background: #b92759;
+    }
+
+    #hiddenMessage {
+      display: none;
+      margin-top: 25px;
+      font-size: 20px;
+      line-height: 1.6;
+      animation: appear 0.6s ease;
+    }
+
+    @keyframes appear {
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .footer {
+      margin-top: 30px;
+      font-size: 14px;
+      opacity: 0.65;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="hearts">
+    <span>❤️</span>
+    <span>💗</span>
+    <span>💕</span>
+    <span>💖</span>
+    <span>❤️</span>
+  </div>
+
+  <main class="card">
+
+    <div class="small">For my favorite person...</div>
+
+    <h1>I'm Sorry</h1>
+
+    <h2>Siri ❤️</h2>
+
+    <div class="heart">💗</div>
+
+    <p class="message">
+      Siri, I know you didn't like that I wished for the exam to be
+      cancelled tomorrow, especially now that it actually got cancelled.
+    </p>
+
+    <p class="message">
+      I honestly didn't mean for it to hurt you or make you feel bad.
+      I was just thinking about not having an exam, but I understand
+      that it didn't feel nice to you.
+    </p>
+
+    <p class="message">
+      <span class="highlight">I'm really sorry.</span>
+      I should have thought more about how you might feel instead of
+      only thinking about what I wanted.
+    </p>
+
+    <p class="message">
+      Your feelings matter to me, Siri. ❤️
+      I don't want something as silly as an exam cancellation to make
+      things bad between us.
+    </p>
+
+    <button onclick="showMessage()">
+      Click this, Siri 💌
+    </button>
+
+    <div id="hiddenMessage">
+      If you're still mad at me, I understand.
+      <br><br>
+      But I hope you can forgive me. 🥺
+      <br><br>
+      <strong>I'm really, really sorry, Siri. ❤️</strong>
+    </div>
+
+    <div class="footer">
+      Made with a guilty heart 🥺❤️
+    </div>
+
+  </main>
+
+  <script>
+    function showMessage() {
+      const message = document.getElementById("hiddenMessage");
+      message.style.display = "block";
+    }
+  </script>
+
+</body>
+</html>
+```
