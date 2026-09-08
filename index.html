@@ -3,161 +3,127 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>For Siri ♡</title>
-
+  <title>Uhhh... Siri 😭</title>
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      min-height: 100vh;
-      font-family: "Segoe UI", sans-serif;
-      background: linear-gradient(135deg, #fff0f5, #ffe4ec, #fff8fa);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow-x: hidden;
-      color: #633247;
-      padding: 20px;
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      min-height:100vh;
+      font-family:"Segoe UI",sans-serif;
+      background:linear-gradient(135deg,#fff0f5,#ffe4ec,#fff8fa);
+      display:flex;justify-content:center;align-items:center;
+      padding:20px;color:#633247;overflow-x:hidden
     }
-
-    .hearts span {
-      position: fixed;
-      bottom: -50px;
-      font-size: 22px;
-      animation: float 9s linear infinite;
-      opacity: .55;
-      z-index: 0;
+    .hearts span{
+      position:fixed;bottom:-50px;font-size:22px;
+      animation:float 9s linear infinite;opacity:.55;z-index:0
     }
     .hearts span:nth-child(1){left:10%;animation-delay:0s}
     .hearts span:nth-child(2){left:30%;animation-delay:3s}
     .hearts span:nth-child(3){left:50%;animation-delay:5s}
     .hearts span:nth-child(4){left:70%;animation-delay:1s}
     .hearts span:nth-child(5){left:90%;animation-delay:4s}
-
-    @keyframes float {
-      0% { transform: translateY(0) rotate(0deg); opacity: 0; }
-      20% { opacity: .6; }
-      100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+    @keyframes float{
+      0%{transform:translateY(0) rotate(0);opacity:0}
+      20%{opacity:.6}
+      100%{transform:translateY(-110vh) rotate(360deg);opacity:0}
+    }
+    .card{
+      position:relative;z-index:1;width:min(88%,520px);
+      padding:35px 28px;text-align:center;
+      background:rgba(255,255,255,.84);
+      border:1px solid rgba(255,190,210,.5);
+      border-radius:24px;
+      box-shadow:0 15px 45px rgba(130,50,80,.15);
+      backdrop-filter:blur(10px)
+    }
+    .mystery{padding:48px 30px}
+    .small{
+      font-size:13px;letter-spacing:2px;text-transform:uppercase;
+      margin-bottom:10px;opacity:.65
+    }
+    h1,h2{
+      font-family:"Segoe Script","Brush Script MT",cursive;
+      font-weight:500
+    }
+    .mystery h1{
+      font-size:clamp(38px,10vw,60px);color:#c94f78;
+      line-height:1.15;margin-bottom:18px
+    }
+    h1{
+      font-size:clamp(50px,13vw,82px);color:#c94f78;
+      line-height:1;margin-bottom:5px;text-shadow:2px 2px #ffe0ea
+    }
+    h2{font-size:34px;color:#7c3b55;margin-bottom:10px}
+    .heart{font-size:45px;animation:heartbeat 1.4s infinite;margin:8px 0 16px}
+    @keyframes heartbeat{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
+    .message{
+      font-size:16px;line-height:1.65;margin:0 auto 17px;max-width:440px
+    }
+    .big-comedy{
+      font-size:19px;line-height:1.65;margin:5px auto 20px;max-width:450px
+    }
+    .highlight{font-weight:700;color:#c94f78}
+    button{
+      border:0;padding:12px 24px;border-radius:999px;
+      background:#c94f78;color:white;font-size:15px;cursor:pointer;
+      transition:.25s;box-shadow:0 7px 18px rgba(201,79,120,.25)
+    }
+    button:hover{transform:scale(1.06)}
+    .photo{
+      width:190px;height:190px;object-fit:cover;border-radius:50%;
+      margin:12px auto 22px;display:block;border:5px solid white;
+      box-shadow:0 8px 25px rgba(130,50,80,.18)
+    }
+    #apology{display:none;animation:appear .7s ease}
+    @keyframes appear{
+      from{opacity:0;transform:translateY(12px)}
+      to{opacity:1;transform:translateY(0)}
+    }
+    #hiddenMessage{
+      display:none;margin-top:22px;font-size:17px;line-height:1.6;
+      animation:appear .6s ease
     }
 
-    .card {
-      position: relative;
-      z-index: 1;
-      width: min(88%, 520px);
-      padding: 35px 28px;
-      text-align: center;
-      background: rgba(255,255,255,.82);
-      border: 1px solid rgba(255,190,210,.5);
-      border-radius: 24px;
-      box-shadow: 0 15px 45px rgba(130,50,80,.15);
-      backdrop-filter: blur(10px);
-      transition: .5s ease;
+    /* Forgiveness card */
+    .forgive-card{
+      margin:28px auto 0;
+      padding:24px 18px;
+      max-width:390px;
+      background:rgba(255,239,246,.94);
+      border:1px solid rgba(201,79,120,.18);
+      border-radius:22px;
+      box-shadow:0 12px 30px rgba(130,50,80,.12);
+      transition:.3s ease
     }
-
-    .mystery { padding: 48px 30px; }
-
-    .small {
-      font-size: 13px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-      opacity: .65;
+    .forgive-card:hover{
+      transform:translateY(-5px);
+      box-shadow:0 18px 35px rgba(130,50,80,.16)
     }
-
-    h1, h2 {
-      font-family: "Segoe Script", "Brush Script MT", cursive;
-      font-weight: 500;
+    .forgive-title{
+      font-size:12px;letter-spacing:2px;text-transform:uppercase;
+      opacity:.6;margin-bottom:7px
     }
-
-    .mystery h1 {
-      font-size: clamp(38px, 10vw, 60px);
-      color: #c94f78;
-      line-height: 1.15;
-      margin-bottom: 18px;
+    .forgive-question{
+      font-family:"Segoe Script","Brush Script MT",cursive;
+      font-size:27px;color:#c94f78;margin-bottom:17px
     }
-
-    h1 {
-      font-size: clamp(55px, 13vw, 85px);
-      color: #c94f78;
-      line-height: 1;
-      margin-bottom: 5px;
-      text-shadow: 2px 2px 0 #ffe0ea;
+    .forgive-buttons{
+      position:relative;min-height:48px;
+      display:flex;justify-content:center;align-items:center;gap:10px
     }
-
-    h2 {
-      font-size: 34px;
-      color: #7c3b55;
-      margin-bottom: 12px;
+    .yes-btn,.no-btn{font-size:14px;padding:11px 20px}
+    .no-btn{
+      position:relative;
+      background:#9d7181;
+      transition:left .2s ease,top .2s ease,transform .2s ease
     }
-
-    .heart {
-      font-size: 45px;
-      animation: heartbeat 1.4s infinite;
-      margin: 8px 0 18px;
+    .yes-reply{
+      display:none;margin-top:16px;font-size:17px;line-height:1.5;
+      animation:appear .5s ease
     }
-
-    @keyframes heartbeat {
-      0%,100% { transform: scale(1); }
-      50% { transform: scale(1.12); }
-    }
-
-    .message {
-      font-size: 16px;
-      line-height: 1.65;
-      margin: 0 auto 17px;
-      max-width: 440px;
-    }
-
-    .highlight { font-weight: 700; color: #c94f78; }
-
-    button {
-      border: none;
-      padding: 12px 24px;
-      border-radius: 999px;
-      background: #c94f78;
-      color: white;
-      font-size: 15px;
-      cursor: pointer;
-      transition: .25s;
-      box-shadow: 0 7px 18px rgba(201,79,120,.25);
-    }
-
-    button:hover { transform: scale(1.05); }
-
-    .photo {
-      width: 190px;
-      height: 190px;
-      object-fit: cover;
-      border-radius: 50%;
-      margin: 15px auto 22px;
-      display: block;
-      border: 5px solid white;
-      box-shadow: 0 8px 25px rgba(130,50,80,.18);
-    }
-
-    #apology { display: none; animation: appear .7s ease; }
-
-    @keyframes appear {
-      from { opacity: 0; transform: translateY(12px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    #hiddenMessage {
-      display: none;
-      margin-top: 22px;
-      font-size: 17px;
-      line-height: 1.6;
-      animation: appear .6s ease;
-    }
-
-    .footer {
-      margin-top: 22px;
-      font-size: 12px;
-      opacity: .5;
-    }
+    .footer{margin-top:22px;font-size:12px;opacity:.5}
   </style>
 </head>
-
 <body>
   <div class="hearts">
     <span>♡</span><span>♡</span><span>♥</span><span>♡</span><span>♥</span>
@@ -166,71 +132,117 @@
   <main class="card mystery" id="card">
 
     <section id="opening">
-      <div class="small">A little something for you...</div>
-      <h1>Hey Siri... ♡</h1>
+      <div class="small">Siri, please don't judge me...</div>
+      <h1>Hey Siri... 👀</h1>
       <p class="message">
-        I made something for you.<br>
-        Just give me one click? 🥺
+        I have something extremely important to tell you.<br>
+        Unfortunately, I am also extremely stupid PLSSSSSSSSSSS. 😭
       </p>
-      <button onclick="reveal()">Open this 💌</button>
+      <button onclick="reveal()">Okay fine... open it 💌</button>
     </section>
 
     <section id="apology">
-      <div class="small">For my favorite person...</div>
-      <h1>I'm Sorry</h1>
+      <div class="small">THE OFFICIAL STATEMENT™</div>
+      <h1>I'm Sorry 😭</h1>
       <h2>Siri ♡</h2>
 
-      <div class="heart">💗</div>
+      <div class="heart">💀💗</div>
 
       <img src="Siri1.png" alt="Siri" class="photo">
 
-      <p class="message">
-        Siri, I know you didn't like that I wished for the exam to
-        be cancelled tomorrow, especially now that it actually got cancelled.
+      <p class="big-comedy">
+        <strong>SORRYYYY BROOOOO 😭😭😭</strong><br>
+        I DIDN'TTTTT KNOWWWWW 😭
       </p>
 
       <p class="message">
-        I honestly didn't mean for it to hurt you or make you feel bad.
-        I was just thinking about not having an exam, but I understand
-        that it didn't feel nice to you.
+        Like bro... I wished for the exam to get cancelled
+        and then thEN NO WAY ZEUS SAIDD YESSIR
+        <strong>"say less."</strong> 💀
       </p>
 
       <p class="message">
-        <span class="highlight">I'm really sorry.</span>
-        I should have thought more about how you might feel instead of
-        only thinking about what I wanted.
+        AND THEN IT ACTUALLY GOT CANCELLED.
+        At that point even I was like...
+        <strong>WAIT HOLD ON THAT WASN'T SUPPOSED TO HAPPEN 😭(No i did not) but YEAHH</strong>
       </p>
 
       <p class="message">
-        Your feelings matter to me, Siri. ♡
-        I don't want something as silly as an exam cancellation to make
-        things bad between us.
+        I genuinely didn't mean for you to be upset, Siri.
+        My brain was just like:
+        <strong>"no exam = yay"</strong> 🧠✨
+        BUT SHI GLL GNGG WITH THE PYSCHH YFM STAWP PLAYIN
       </p>
 
-      <button onclick="showMessage()">One more thing... 💌</button>
+      <p class="message">
+        So yes, I am officially submitting my apology.
+        <span class="highlight">Please accept it before I embarrass myself any further. 😭</span>
+      </p>
+
+      <button onclick="showMessage()">WAIT THERE'S MORE 😭</button>
 
       <div id="hiddenMessage">
-        If you're still mad at me, I understand.
+        I am sorryyyyyyyyyy 😭💗
         <br><br>
-        But I really hope you can forgive me. 🥺
+        I didn't know my little exam wish was going to have
+        <strong>ACTUAL CONSEQUENCES.</strong> 💀
         <br><br>
-        <strong>I'm really, really sorry, Siri. ♡</strong>
+        You're allowed to be annoyed at me...
+        but please forgive this idiot eventually. 🥲
+        <br><br>
+        <strong>SORRY SIRI. I DIDNTTTT KNOWWWWW 😭❤️</strong>
       </div>
 
-      <div class="footer">Made with a guilty heart 🥺♡</div>
-    </section>
+      <div class="forgive-card">
+        <div class="forgive-title">ONE LAST VERY IMPORTANT QUESTION</div>
+        <div class="forgive-question">Do you forgive me? 🥺</div>
 
+        <div class="forgive-buttons" id="forgiveButtons">
+          <button class="yes-btn" onclick="forgiveYes()">YES 😭❤️</button>
+          <button class="no-btn" id="noBtn"
+                  onmouseover="moveNo()"
+                  ontouchstart="moveNo()">NO 😭</button>
+        </div>
+
+        <p id="yesReply" class="yes-reply">
+          YAYYYYYYYYY 😭❤️<br>
+          I KNEW YOU'D UNDERSTAND MY SILLY LITTLE BRAIN.
+          <br><br>
+          <strong>THANK YOU SIRI 🫡💗</strong>
+        </p>
+      </div>
+
+      <div class="footer">End of the official apology. No further questions. 🫡</div>
+    </section>
   </main>
 
   <script>
-    function reveal() {
-      document.getElementById("opening").style.display = "none";
-      document.getElementById("apology").style.display = "block";
+    function reveal(){
+      document.getElementById("opening").style.display="none";
+      document.getElementById("apology").style.display="block";
       document.getElementById("card").classList.remove("mystery");
     }
 
-    function showMessage() {
-      document.getElementById("hiddenMessage").style.display = "block";
+    function showMessage(){
+      document.getElementById("hiddenMessage").style.display="block";
+    }
+
+    function moveNo(){
+      const btn = document.getElementById("noBtn");
+      const box = document.getElementById("forgiveButtons");
+
+      const maxX = Math.max(20, box.clientWidth - btn.offsetWidth - 20);
+      const x = Math.random() * maxX - maxX / 2;
+      const y = (Math.random() * 80) - 40;
+
+      btn.style.left = x + "px";
+      btn.style.top = y + "px";
+      btn.style.transform = "rotate(" + ((Math.random()*16)-8) + "deg)";
+    }
+
+    function forgiveYes(){
+      document.getElementById("yesReply").style.display="block";
+      document.getElementById("noBtn").style.display="none";
     }
   </script>
 </body>
